@@ -51,13 +51,13 @@ function translate(text, opts) {
 
         return url + '?' + querystring.stringify(data);
     }).then(function (url) {
-        return got(url//, { 
-            // agent: tunnel.httpOverHttp({
-            //    proxy: {
-            //        host: 'localhost'
-            //    }
-            // })
-        ).then(function (res) {
+        return got(url, { 
+             agent: tunnel.httpOverHttp({
+                proxy: {
+                    host: 'localhost'
+                }
+             })
+        }).then(function (res) {
             var result = {
                 text: '',
                 from: {
