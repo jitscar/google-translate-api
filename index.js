@@ -109,6 +109,7 @@ function translate(text, opts) {
 
             return result;
         }).catch(function (err) {
+            console.log(err.statusCode)
             var e;
             e = new Error();
             if (err.statusCode !== undefined && err.statusCode !== 200) {
