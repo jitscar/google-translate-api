@@ -1,6 +1,8 @@
 var querystring = require('querystring');
 
-var got = require('got');
+const got = require('got');
+const tunnel = require('tunnel');
+
 var safeEval = require('safe-eval');
 var token = require('google-translate-token');
 
@@ -49,7 +51,13 @@ function translate(text, opts) {
 
         return url + '?' + querystring.stringify(data);
     }).then(function (url) {
-        return got(url).then(function (res) {
+        return got(url, { 
+            agent: tunnel.httpOverHttp({
+                proxy: {
+                    host: 'localhost'
+                }
+            })
+        }).then(function (res) {
             var result = {
                 text: '',
                 from: {
