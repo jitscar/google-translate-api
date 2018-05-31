@@ -2,6 +2,8 @@ var querystring = require('querystring');
 
 const got = require('got');
 const tunnel = require('tunnel');
+const HttpAgent = require('agentkeepalive');
+const HttpsAgent = HttpAgent.HttpsAgent;
 
 var safeEval = require('safe-eval');
 var token = require('google-translate-token');
@@ -52,11 +54,15 @@ function translate(text, opts) {
         return url + '?' + querystring.stringify(data);
     }).then(function (url) {
         return got(url, { 
-             agent: tunnel.httpOverHttp({
-                proxy: {
-                    host: 'localhost'
-                }
-             })
+             //agent: tunnel.httpOverHttp({
+             //   proxy: {
+             //       host: 'localhost'
+             //   }
+             //})
+            agent: {
+		        http: new HttpAgent(),
+		        https: new HttpsAgent()
+	        }
         }).then(function (res) {
             var result = {
                 text: '',
