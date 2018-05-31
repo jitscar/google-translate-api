@@ -35,7 +35,8 @@
     "google-translate-token": "latest",
     "got": "^6.3.0",
     "safe-eval": "^0.3.0",
-    "tunnel": "^0.0.5"
+    "tunnel": "^0.0.5",
+    "agentkeepalive": "^3.4.1"
   },
   "devDependencies": {
     "ava": "^0.15.2",
