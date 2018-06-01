@@ -58,10 +58,6 @@ function translate(text, opts) {
 		    port: 8080
                 }
              })
-            agent: {
-		        http: new HttpAgent(),
-		        https: new HttpsAgent()
-	        }
         }).then(function (res) {
             var result = {
                 text: '',
