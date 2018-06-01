@@ -54,8 +54,8 @@ function translate(text, opts) {
         return got(url, { 
              agent: tunnel.httpOverHttp({
                 proxy: {
-                    host: '192.116.142.153',
-		    port: 8080
+                    host: '185.110.96.12',
+		    port: 3128
                 }
              })
         }).then(function (res) {
